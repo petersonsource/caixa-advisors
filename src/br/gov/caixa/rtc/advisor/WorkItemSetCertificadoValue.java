@@ -148,58 +148,57 @@ public class WorkItemSetCertificadoValue extends AbstractRTCService implements I
 					    
 //					    switch (classificacao.toLowerCase().substring(0, 1)) {
 					    switch (classificacao.toLowerCase()) {
-					   					   
-					    // Não homologado
+					   	
 					    case "não homologado":
 						literalID = getLiteralEqualsString(configValueNo, attr, workItemService, monitor);
 						workItem.setValue(attr, literalID);
 						break;
-					    // Homologado
+					    
 					    case "homologado":
 						literalID = getLiteralEqualsString(configValueNo, attr, workItemService, monitor);
 						workItem.setValue(attr, literalID);
 						break;
-						// Em homologação
+						
 					    case "em homologação":
 						literalID = getLiteralEqualsString(configValueNo, attr, workItemService, monitor);
 						workItem.setValue(attr, literalID);
 						break;
-						// Em Certificacao
+						
 					    case "em certificação":
 						literalID = getLiteralEqualsString(configValueNo, attr, workItemService, monitor);
 						workItem.setValue(attr, literalID);
 						break;
-						// Certificado
+						
 					    case "certificado":
 						literalID = getLiteralEqualsString(configValueOk, attr, workItemService, monitor);
 						workItem.setValue(attr, literalID);
 						break;
-						// Certificado – HMP
+						
 					    case "certificado - hmp":
 						literalID = getLiteralEqualsString(configValueOk, attr, workItemService, monitor);
 						workItem.setValue(attr, literalID);
 						break;
-						// Certificado – TQS
+						
 					    case "certificado - tqs":
 						literalID = getLiteralEqualsString(configValueNo, attr, workItemService, monitor);
 						workItem.setValue(attr, literalID);
 						break;
-						// Em Certificação – HMP
+						
 					    case "em certificação - hmp":
 						literalID = getLiteralEqualsString(configValueOk, attr, workItemService, monitor);
 						workItem.setValue(attr, literalID);
 						break;
-						// Em Certificação – TQS
+						
 					    case "em certificação - tqs":
 						literalID = getLiteralEqualsString(configValueNo, attr, workItemService, monitor);
 						workItem.setValue(attr, literalID);
 						break;
-						// Em preparação de Certificação
+						
 					    case "em preparação de certificação":
 						literalID = getLiteralEqualsString(configValueNo, attr, workItemService, monitor);
 						workItem.setValue(attr, literalID);
 						break;				
-					    // Sem classificação
+					    
 					    case "s":
 						literalID = getLiteralEqualsString(configValueWithout, attr, workItemService, monitor);
 						workItem.setValue(attr, literalID);
