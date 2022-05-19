@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.3"?>
+<plugin>
+   
+   <extension point="com.ibm.team.process.service.operationAdvisors">
+   
+	  <operationAdvisor
+			class="com.ibm.rational.services.rtc.advisor.DateTimeAdvisor"
+			id="com.ibm.rational.services.rtc.advisor.DateTimeAdvisor"
+			name="Date Time Advisor"
+			operationId="com.ibm.team.workitem.operation.workItemSave">
+			<description>
+				Get hour from a string attr and join with a Timestamp attr
+			</description>
+	        <extensionService
+	               componentId="com.ibm.rational.services.rtc.advisor.DateTimeAdvisor"
+	               implementationClass="com.ibm.rational.services.rtc.advisor.DateTimeAdvisor">
+	               <prerequisites>
+					   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>	               	   
+	               </prerequisites>
+	        </extensionService>  			
+	  </operationAdvisor>   
+	  
+	  <operationAdvisor
+			class="com.ibm.rational.services.rtc.advisor.WorkItemProgressAdvisor"
+			id="com.ibm.rational.services.rtc.advisor.WorkItemProgressAdvisor"
+			name="Work Item Progress Advisor"
+			operationId="com.ibm.team.workitem.operation.workItemSave">
+			<description>
+				Check the WI state and set the percentage attribute
+			</description>
+	        <extensionService
+	               componentId="com.ibm.rational.services.rtc.advisor.WorkItemProgressAdvisor"
+	               implementationClass="com.ibm.rational.services.rtc.advisor.WorkItemProgressAdvisor">
+	               <prerequisites>
+					   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>	               	   
+	               </prerequisites>
+	        </extensionService>  			
+	  </operationAdvisor>  	     
+	  
+	  <operationAdvisor
+			class="com.ibm.rational.services.rtc.advisor.ClearQuestLinkAdvisor"
+			id="com.ibm.rational.services.rtc.advisor.ClearQuestLinkAdvisor"
+			name="ClearQuest Link Advisor"
+			operationId="com.ibm.team.workitem.operation.workItemSave">
+			<description>
+				Add a web link from SISOL to ClearQuest 
+			</description>
+	        <extensionService
+	               componentId="com.ibm.rational.services.rtc.advisor.ClearQuestLinkAdvisor"
+	               implementationClass="com.ibm.rational.services.rtc.advisor.ClearQuestLinkAdvisor">
+	               <prerequisites>
+					   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>	  	               	   
+	               </prerequisites>
+	        </extensionService> 
+	  </operationAdvisor> 
+
+<!--	  
+	  <operationAdvisor
+			class="com.ibm.rational.services.rtc.advisor.MoveWorkItemsAdvisor"
+			id="com.ibm.rational.services.rtc.advisor.MoveWorkItemsAdvisor"
+			name="Move WorkItems Advisor"
+			operationId="com.ibm.team.workitem.operation.workItemSave">
+			<description>
+				Move all work items from this project area to another
+			</description>
+	        <extensionService
+	               componentId="com.ibm.rational.services.rtc.advisor.MoveWorkItemsAdvisor"
+	               implementationClass="com.ibm.rational.services.rtc.advisor.MoveWorkItemsAdvisor">
+	               <prerequisites>
+					   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+					   <requiredService interface="com.ibm.team.workitem.service.IAuditableServer"/>	  
+					   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>	  	               	   
+	               </prerequisites>
+	        </extensionService>  			
+	  </operationAdvisor> 
+-->
+	  
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemCloseParent"
+            id="br.gov.caixa.rtc.advisor.WorkItemCloseParent"
+            name="Fechar Item de Trabalho Pai"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+	        <extensionService
+	               componentId="br.gov.caixa.rtc.advisor.WorkItemCloseParent"
+	               implementationClass="br.gov.caixa.rtc.advisor.WorkItemCloseParent">
+	               <prerequisites>
+					   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+					   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>	               	   
+	               </prerequisites>
+	        </extensionService>             
+      </operationAdvisor>
+      
+            <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemCloseRelated"
+            id="br.gov.caixa.rtc.advisor.WorkItemCloseRelated"
+            name="Fechar Item de Trabalho Relacionado"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+	        <extensionService
+	               componentId="br.gov.caixa.rtc.advisor.WorkItemCloseRelated"
+	               implementationClass="br.gov.caixa.rtc.advisor.WorkItemCloseRelated">
+	               <prerequisites>
+					   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+					   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>	               	   
+	               </prerequisites>
+	        </extensionService>             
+      </operationAdvisor>    	  
+	  
+      <operationAdvisor
+            class="com.ibm.rational.services.rtc.advisor.CheckResolverPermitionAdvisor"
+            id="com.ibm.rational.services.rtc.advisor.CheckResolverPermitionAdvisor"
+            name="Verificar quem pode fechar o Work Item"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+	        <extensionService
+	               componentId="com.ibm.rational.services.rtc.advisor.CheckResolverPermitionAdvisor"
+	               implementationClass="com.ibm.rational.services.rtc.advisor.CheckResolverPermitionAdvisor">
+	               <prerequisites>
+					   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+					   <requiredService interface="com.ibm.team.repository.common.service.IQueryService"/>	               	   
+	               </prerequisites>
+	        </extensionService>             
+      </operationAdvisor> 	  
+	  
+      <operationAdvisor
+            class="com.ibm.rational.services.rtc.advisor.CheckResolverPermitionAdvisor2"
+            id="com.ibm.rational.services.rtc.advisor.CheckResolverPermitionAdvisor2"
+            name="Gravar equipe e verificar quem pode fechar o Work Item"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+	        <extensionService
+	               componentId="com.ibm.rational.services.rtc.advisor.CheckResolverPermitionAdvisor2"
+	               implementationClass="com.ibm.rational.services.rtc.advisor.CheckResolverPermitionAdvisor2">
+	               <prerequisites>
+					   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+					   <requiredService interface="com.ibm.team.repository.common.service.IQueryService"/>	               	   
+	               </prerequisites>
+	        </extensionService>             
+      </operationAdvisor>
+      
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.CreateWorkItemFromTemplate"
+            id="br.gov.caixa.rtc.advisor.CreateWorkItemFromTemplate"
+            name="Criar Itens de Trabalho à partir do Modelo"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.CreateWorkItemFromTemplate"
+               implementationClass="br.gov.caixa.rtc.advisor.CreateWorkItemFromTemplate">
+               <prerequisites>
+               	   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+				   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+				   <requiredService interface="com.ibm.team.workitem.common.internal.IWorkItemTemplateService"/>
+			       <requiredService interface="com.ibm.team.repository.common.service.IQueryService"/>				   				   			   					                 	   
+               </prerequisites>
+         </extensionService>            
+      </operationAdvisor>
+      
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.CreateWorkItemFromTemplateUserSelection"
+            id="br.gov.caixa.rtc.advisor.CreateWorkItemFromTemplateUserSelection"
+            name="Criar Itens de Trabalho à partir do Modelo - Solicitação Usuário"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.CreateWorkItemFromTemplateUserSelection"
+               implementationClass="br.gov.caixa.rtc.advisor.CreateWorkItemFromTemplateUserSelection">
+               <prerequisites>
+               	   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+				   <requiredService interface="com.ibm.team.workitem.common.internal.IWorkItemTemplateService"/>
+				   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+               </prerequisites>
+         </extensionService>            
+      </operationAdvisor>
+      
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.PaiTipoEspecificoObrigatorioCriacaoItem"
+            id="br.gov.caixa.rtc.advisor.PaiTipoEspecificoObrigatorioCriacaoItem"
+            name="Link Pai de um Tipo Específico Obrigatório para a Criação do Item de Trabalho"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.PaiTipoEspecificoObrigatorioCriacaoItem"
+               implementationClass="br.gov.caixa.rtc.advisor.PaiTipoEspecificoObrigatorioCriacaoItem">
+               <prerequisites>
+               	   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+				   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+				   <requiredService interface="com.ibm.team.workitem.common.internal.IWorkItemTemplateService"/>
+			       <requiredService interface="com.ibm.team.repository.common.service.IQueryService"/>				   				   			   					                 	   
+               </prerequisites>
+         </extensionService>            
+      </operationAdvisor>
+      
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemCustomValidatorAdvisor"
+            id="br.gov.caixa.rtc.advisor.WorkItemCustomValidatorAdvisor"
+            name="Validador Customizado"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.WorkItemCustomValidatorAdvisor"
+               implementationClass="br.gov.caixa.rtc.advisor.WorkItemCustomValidatorAdvisor">
+               <prerequisites>
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+				   <requiredService interface="com.ibm.team.workitem.common.internal.IWorkItemTemplateService"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+               </prerequisites>
+         </extensionService> 
+      </operationAdvisor>
+      
+      <!--<operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemChangeParentChildStates"
+            id="br.gov.caixa.rtc.advisor.WorkItemChangeParentChildStates"
+            name="Muda Estados do Pai e dos Filhos por mudança em atributo"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.WorkItemChangeParentChildStates"
+               implementationClass="br.gov.caixa.rtc.advisor.WorkItemChangeParentChildStates">
+               <prerequisites>
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+				   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+               </prerequisites>
+         </extensionService> 
+      </operationAdvisor>-->
+      
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemParentStatusOpenRequiredAdvisor"
+            id="br.gov.caixa.rtc.advisor.WorkItemParentStatusOpenRequiredAdvisor"
+            name="Validar se o Pai está Concluído"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+	        <extensionService
+	               componentId="br.gov.caixa.rtc.advisor.WorkItemParentStatusOpenRequiredAdvisor"
+	               implementationClass="br.gov.caixa.rtc.advisor.WorkItemParentStatusOpenRequiredAdvisor">
+	               <prerequisites>					  
+					   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>	               	   
+	               </prerequisites>
+	        </extensionService>             
+      </operationAdvisor>
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemRequiredAttributecondition"
+            id="br.gov.caixa.rtc.advisor.WorkItemRequiredAttributecondition"
+            name="Campos Obrigatórios com Condição"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.WorkItemRequiredAttributecondition"
+               implementationClass="br.gov.caixa.rtc.advisor.WorkItemRequiredAttributecondition">
+            	<prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+				   <requiredService interface="com.ibm.team.workitem.common.internal.IWorkItemTemplateService"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemUpdateAttributecondition"
+            id="br.gov.caixa.rtc.advisor.WorkItemUpdateAttributecondition"
+            name="Atualizar valor de atributo com Condição"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.WorkItemUpdateAttributecondition"
+               implementationClass="br.gov.caixa.rtc.advisor.WorkItemUpdateAttributecondition">
+               <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+				   <requiredService interface="com.ibm.team.workitem.common.internal.IWorkItemTemplateService"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemSetCertificadoValue"
+            id="br.gov.caixa.rtc.advisor.WorkItemSetCertificadoValue"
+            name="Insere valor da certificação do sistema"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.WorkItemSetCertificadoValue"
+               implementationClass="br.gov.caixa.rtc.advisor.WorkItemSetCertificadoValue">
+            <prerequisites>                     
+                   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>                         
+                </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.ValidadeAttrValueAnotherItem"
+            id="br.gov.caixa.rtc.advisor.ValidadeAttrValueAnotherItem"
+            name="Valida atributo em outro item de trabalho"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.ValidadeAttrValueAnotherItem"
+               implementationClass="br.gov.caixa.rtc.advisor.ValidadeAttrValueAnotherItem">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+	  <operationAdvisor
+         class="br.gov.caixa.rtc.advisor.RecoverPhysicalLocation"
+         id="br.gov.caixa.rtc.advisor.RecoverPhysicalLocation"
+         name="Recupera Lotação do Usuário"
+         operationId="com.ibm.team.workitem.operation.workItemSave">
+         <description>
+				Recupera Lotação do Usuário
+			</description>
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.RecoverPhysicalLocation"
+               implementationClass="br.gov.caixa.rtc.advisor.RecoverPhysicalLocation">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+      <operationAdvisor
+         class="br.gov.caixa.rtc.advisor.RecoverFirstPhysicalLocation"
+         id="br.gov.caixa.rtc.advisor.RecoverFirstPhysicalLocation"
+         name="Recupera Lotação do Usuário (Única)"
+         operationId="com.ibm.team.workitem.operation.workItemSave">
+         <description>
+				Recupera Lotação do Usuário (Única)
+			</description>
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.RecoverFirstPhysicalLocation"
+               implementationClass="br.gov.caixa.rtc.advisor.RecoverFirstPhysicalLocation">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+      <operationAdvisor
+         class="br.gov.caixa.rtc.advisor.WorkItemParentUpdateChildComment"
+         id="br.gov.caixa.rtc.advisor.WorkItemParentUpdateChildComment"
+         name="Alteração de atributo no Pai atualiza Filho"
+         operationId="com.ibm.team.workitem.operation.workItemSave">
+         <description>
+				Alteração atributo no Pai atualiza Filho
+			</description>
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.WorkItemParentUpdateChildComment"
+               implementationClass="br.gov.caixa.rtc.advisor.WorkItemParentUpdateChildComment">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.links.common.service.ILinkService"/>
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.ValidadeElevation"
+            id="br.gov.caixa.rtc.advisor.ValidadeElevation"
+            name="Valida alçada para modificação em atributo"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.ValidadeElevation"
+               implementationClass="br.gov.caixa.rtc.advisor.ValidadeElevation">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.ValidadeUserAction"
+            id="br.gov.caixa.rtc.advisor.ValidadeUserAction"
+            name="Valida o usuário que executa a ação"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.ValidadeUserAction"
+               implementationClass="br.gov.caixa.rtc.advisor.ValidadeUserAction">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+      
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.ValidadeRelated"
+            id="br.gov.caixa.rtc.advisor.ValidadeRelated"
+            name="Valida status dos itens relacionados"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.ValidadeRelated"
+               implementationClass="br.gov.caixa.rtc.advisor.ValidadeRelated">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.ValidadeRelatedHmpPrd"
+            id="br.gov.caixa.rtc.advisor.ValidadeRelatedHmpPrd"
+            name="Valida status dos itens relacionados (HMP/PRD)"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.ValidadeRelatedHmpPrd"
+               implementationClass="br.gov.caixa.rtc.advisor.ValidadeRelatedHmpPrd">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+       <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.ValidadeElevationAction"
+            id="br.gov.caixa.rtc.advisor.ValidadeElevationAction"
+            name="Valida alçada para modificação em status"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.ValidadeElevationAction"
+               implementationClass="br.gov.caixa.rtc.advisor.ValidadeElevationAction">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.ValidadeRoleAttrValue"
+            id="br.gov.caixa.rtc.advisor.ValidadeRoleAttrValue"
+            name="Valida perfil para modificação em valor de enumeração"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.ValidadeRoleAttrValue"
+               implementationClass="br.gov.caixa.rtc.advisor.ValidadeRoleAttrValue">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+
+<operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemSetClassValue"
+            id="br.gov.caixa.rtc.advisor.WorkItemSetClassValue"
+            name="Insere valor da classificação do sistema"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.WorkItemSetClassValue"
+               implementationClass="br.gov.caixa.rtc.advisor.WorkItemSetClassValue">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemSetDeployValue"
+            id="br.gov.caixa.rtc.advisor.WorkItemSetDeployValue"
+            name="Insere valor de Deploy do sistema"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.WorkItemSetDeployValue"
+               implementationClass="br.gov.caixa.rtc.advisor.WorkItemSetDeployValue">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemLinkVerification"
+            id="br.gov.caixa.rtc.advisor.WorkItemLinkVerification"
+            name="Verifica hierarquia de itens de trabalho"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.WorkItemLinkVerification"
+               implementationClass="br.gov.caixa.rtc.advisor.WorkItemLinkVerification">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemBlockLinkEditing"
+            id="br.gov.caixa.rtc.advisor.WorkItemBlockLinkEditing"
+            name="Bloqueia Inclusão/Exclusão de Link"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+            <description>
+				Bloqueia Inclusão/Exclusão de Link 
+			</description>
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.WorkItemBlockLinkEditing"
+               implementationClass="br.gov.caixa.rtc.advisor.WorkItemBlockLinkEditing">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+       <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemBlockSendRmITSM"
+            id="br.gov.caixa.rtc.advisor.WorkItemBlockSendRmITSM"
+            name="Bloqueia envio RM ao ITSM"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+            <description>
+				Trava envio RM para o ITSM
+			</description>
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.WorkItemBlockSendRmITSM"
+               implementationClass="br.gov.caixa.rtc.advisor.WorkItemBlockSendRmITSM">
+            <prerequisites>
+             	   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.repository.common.service.IQueryService"/>	 	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+      <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemUpdateItemITSM"
+            id="br.gov.caixa.rtc.advisor.WorkItemUpdateItemITSM"
+            name="Atualiza informações do work item no ITSM"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.WorkItemUpdateItemITSM"
+               implementationClass="br.gov.caixa.rtc.advisor.WorkItemUpdateItemITSM">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IAuditableCommon"/>
+           </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+
+	  <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemSetCategoryValue"
+            id="br.gov.caixa.rtc.advisor.WorkItemSetCategoryValue"
+            name="Insere valor da categoria com base em um atributo"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.WorkItemSetCategoryValue"
+               implementationClass="br.gov.caixa.rtc.advisor.WorkItemSetCategoryValue">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+      
+     
+      
+ <!--     <operationAdvisor
+            class="br.gov.caixa.rtc.advisor.WorkItemSetPlannedForFromEnumeration"
+            id="br.gov.caixa.rtc.advisor.WorkItemSetPlannedForFromEnumeration"
+            name="Insere valor do Planejado Para a partir de uma Enumeração"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.advisor.WorkItemSetPlannedForFromEnumeration"
+               implementationClass="br.gov.caixa.rtc.advisor.WorkItemSetPlannedForFromEnumeration">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.process.service.IProcessServerService"/>
+                   <requiredService interface="com.ibm.team.workitem.common.IWorkItemCommon"/>	               	   
+	            </prerequisites>
+         </extensionService>
+      </operationAdvisor>
+-->      
+      
+   </extension>
+   <extension
+         point="com.ibm.team.process.service.operationParticipants">
+      <operationParticipant
+            class="br.gov.caixa.rtc.participant.WorkItemChangeParentChildStates"
+            id="br.gov.caixa.rtc.participant.WorkItemChangeParentChildStates"
+            name="Muda Estados do Pai e dos Filhos"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+            <extensionService
+               componentId="br.gov.caixa.rtc.participant.WorkItemChangeParentChildStates"
+               implementationClass="br.gov.caixa.rtc.participant.WorkItemChangeParentChildStates">
+               <prerequisites>
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+				   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+               </prerequisites>
+         </extensionService>
+      </operationParticipant>
+
+ 
+       <operationParticipant
+            class="br.gov.caixa.rtc.participant.SendMailForState"
+            id="br.gov.caixa.rtc.participant.SendMailForState"
+            name="Envia e-mail para avaliação da TI"
+            operationId="com.ibm.team.workitem.operation.workItemSave">
+         <extensionService
+               componentId="br.gov.caixa.rtc.participant.SendMailForState"
+               implementationClass="br.gov.caixa.rtc.participant.SendMailForState">
+            <prerequisites>					  
+				   <requiredService interface="com.ibm.team.workitem.service.IWorkItemServer"/>
+                   <requiredService interface="com.ibm.team.repository.service.IRepositoryItemService"/>
+                   <requiredService interface="com.ibm.team.repository.service.IMailerService"/>
+	            </prerequisites>
+         </extensionService>
+      </operationParticipant>
+      </extension>
+
+</plugin>

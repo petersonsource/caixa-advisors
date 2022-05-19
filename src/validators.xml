@@ -1,0 +1,55 @@
+<list>
+  <validator wiType="mensuracao">
+    <condition>
+      <attribute>com.ibm.team.workitem.workItemType.mensuracao.tipoServico</attribute>
+      <value>com.ibm.team.workitem.common.model.ILiteral:tipoServico.literal.l19</value>
+    </condition>
+    <attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.percentualRealizado</attributeRequired>	
+	<reason>Campo obrigatório em função do Tipo de Serviço "Alteração de Escopo"</reason>
+  </validator>
+  
+  <validator wiType="mensuracao" targetState="mensuracaoWorkflow.state.s3">
+    <condition>
+      <attribute>com.ibm.team.workitem.workItemType.mensuracao.tipoServico</attribute>
+      <value>com.ibm.team.workitem.common.model.ILiteral:tipoServico.literal.l19</value>
+    </condition>
+    <attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.percentualEsforcoRealizadoAntesAlteracao</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.tamanhoFuncionalProdutoAntesAlteracao</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.fatorAjusteIFPUGAntesAlteracao</attributeRequired>    
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.tamanhoFuncionalProdutoAjustadoAntesAlteracao</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.tamanhoPFIncluidoExistentesAntesAlteracao</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.tamanhoPFAlteradoExistentesAntesAlteracao</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.tamanhoPFExcluidoExistentesAntesAlteracao</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.novoTamanhoFuncionalProdutoAposAlteracao</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.fatorAjusteIFPUGAposAlteracao</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.tamanhoFuncionalProdutoAjustadoAposAlteracao</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.tamanhoPFIncluidoAposAlteracao</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.tamanhoPFAlteradoAposAlteracao</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.tamanhoPFExcluidoAposAlteracao</attributeRequired>	
+	<reason>Campo obrigatório em função do Tipo de Serviço "Alteração de Escopo"</reason>
+  </validator>  
+  
+  <validator wiType="mensuracao">
+    <condition>
+      <attribute>com.ibm.team.workitem.workItemType.mensuracao.tipoServico</attribute>
+      <value>com.ibm.team.workitem.common.model.ILiteral:tipoServico.literal.l24</value>
+    </condition>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.tamanhoFuncionalValidar</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.executadaPor</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.nomeExecutorValidacao</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.validadorTelefone</attributeRequired>
+	<attributeRequired>com.ibm.team.workitem.workItemType.mensuracao.validadorPossuiCFPS</attributeRequired>
+	<reason>Campo obrigatório em função do Tipo de Serviço "Validação de Contagem"</reason>
+  </validator>  
+  
+  <validator wiType="task">
+    <condition>
+      <attribute>summary</attribute>
+      <value>aaa</value>
+      <value>bbb</value>
+    </condition>
+    <attributeRequired>dueDate</attributeRequired>
+    <attributeRequired>description</attributeRequired>
+    <reason>Campo obrigatório em função de testes</reason>
+  </validator>
+</list>
