@@ -1,5 +1,3 @@
-//it's just a comment
-
 package br.gov.caixa.rtc.advisor;
 
 import java.io.InputStream;
